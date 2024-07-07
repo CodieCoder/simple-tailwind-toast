@@ -1,10 +1,13 @@
 {
   "name": "simple-tailwind-toast",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple toast package for React apps using tailwind.",
   "author": "CodieCoder",
   "license": "MIT",
-  "repository": "CodieCoder/simple-tailwind-toast",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodieCoder/simple-tailwind-toast.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
@@ -25,7 +28,7 @@
   },
   "peerDependencies": {
     "react": "^18.3.1",
-    "react-dom": "^16.13.1",
+    "react-dom": "^18.3.1",
     "typescript": "^3.7.5",
     "sass": "^1.77.6"
   },
