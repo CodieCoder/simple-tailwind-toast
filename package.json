@@ -1,0 +1,33 @@
+{
+  "name": "simple-tailwind-toast",
+  "version": "1.0.0",
+  "description": "A simple toast package for React apps using tailwind.",
+  "main": "dist/index.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Chukwunonso Emmanuel Nnalue",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/uuid": "^10.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.2.1",
+    "typescript": "^5.5.3",
+    "uuid": "^10.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}
