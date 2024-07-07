@@ -1,6 +1,6 @@
 {
   "name": "simple-tailwind-toast",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple toast package for React apps using tailwind.",
   "author": "CodieCoder",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
+    "react": "^18.3.1",
     "react-dom": "^16.13.1",
     "typescript": "^3.7.5",
     "sass": "^1.77.6"
