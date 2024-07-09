@@ -21,7 +21,3 @@ export declare type TToastReducer = {
     payload?: any;
 };
 export declare type IToastContextDispatch = React.Dispatch<TToastReducer>;
-export declare type SimpleToaster = React.JSX.Element;
-export declare type SimpleToastProvider = React.FC<{
-    children: React.ReactNode;
-}>;

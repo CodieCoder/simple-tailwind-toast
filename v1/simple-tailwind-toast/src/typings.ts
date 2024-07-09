@@ -39,7 +39,3 @@ export type TToastReducer = {
 }
 
 export type IToastContextDispatch = React.Dispatch<TToastReducer>
-
-// export type SimpleToaster = React.JSX.Element
-
-// export type SimpleToastProvider = React.FC<{ children: React.ReactNode }>
