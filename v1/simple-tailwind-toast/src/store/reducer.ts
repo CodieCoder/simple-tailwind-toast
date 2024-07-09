@@ -1,5 +1,5 @@
 import { v4 } from 'uuid'
-import { ISimpleToast, IToastContextStore, TToastReducer } from '../typings'
+import { ISimpleToast, IToastContextStore, TToastReducer } from '..'
 import { SIMPLE_TOASTER_ACTIONS } from './actions'
 
 export const toastReducer = (

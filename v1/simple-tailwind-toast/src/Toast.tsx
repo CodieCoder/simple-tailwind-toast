@@ -1,7 +1,7 @@
 import React from 'react'
-import { ISimpleToast } from './typings'
 import { useSimpleToast } from './store/Context'
 import { FiX } from 'react-icons/fi'
+import { ISimpleToast } from '.'
 
 const Toast: React.FC<{ toast: ISimpleToast }> = ({ toast }) => {
   const [className, setClassName] = React.useState('')

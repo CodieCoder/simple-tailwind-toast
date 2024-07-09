@@ -1,9 +1,5 @@
 import { createContext, useContext } from 'react'
-import {
-  ISimpleToast,
-  IToastContextDispatch,
-  IToastContextStore
-} from '../typings'
+import { ISimpleToast, IToastContextDispatch, IToastContextStore } from '..'
 import { SIMPLE_TOASTER_ACTIONS } from './actions'
 
 export const initialValues: Partial<IToastContextStore> = {

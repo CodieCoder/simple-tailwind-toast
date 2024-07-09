@@ -1,5 +1,8 @@
 import SimpleToaster from './SimpleToaster'
 import SimpleToastProvider from './store'
 import { useSimpleToast } from './store/Context'
+export * from './typings'
 
-export default { SimpleToaster, SimpleToastProvider, useSimpleToast }
+const simpleToaster = { SimpleToaster, SimpleToastProvider, useSimpleToast }
+
+export default simpleToaster
