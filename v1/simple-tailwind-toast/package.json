@@ -1,6 +1,6 @@
 {
   "name": "simple-tailwind-toast",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A simple toast package for React apps using tailwind.",
   "author": "CodieCoder",
   "license": "MIT",
@@ -10,8 +10,8 @@
   },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
-  "types": "dist/typings.d.ts",
-  "source": "src/index.ts",
+  "types": "dist/typings.js",
+  "source": "src/index.js",
   "engines": {
     "node": ">=10"
   },
