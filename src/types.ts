@@ -1,7 +1,7 @@
 export interface ISimpleToastContent {
   title?: React.ReactNode;
   description?: React.ReactNode;
-  type?: 'error' | 'success' | 'warning';
+  type?: "error" | "success" | "warning";
 }
 
 export interface ISimpleToast {

@@ -1,4 +1,4 @@
-import { IToastContextStore } from './types';
+import { IToastContextStore } from "./types";
 
 export const initialValues: Partial<IToastContextStore> = {
   toasts: [],

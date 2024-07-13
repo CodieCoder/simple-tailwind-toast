@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { ISimpleToast } from '../types';
 import { useSimpleToast } from '../store/hooks';
-import '../style.css';
+import './styles.css';
 
 const Toast: React.FC<{ toast: ISimpleToast }> = ({ toast }) => {
   const [className, setClassName] = React.useState('');

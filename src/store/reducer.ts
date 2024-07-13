@@ -2,13 +2,13 @@ import {
   ISimpleToast,
   IToastContextStore,
   TToastReducerPayload,
-} from '../types';
-import { SIMPLE_TOASTER_ACTIONS } from './actions';
-import { v4 } from 'uuid';
+} from "../types";
+import { SIMPLE_TOASTER_ACTIONS } from "./actions";
+import { v4 } from "uuid";
 
 export const toastReducer = (
   state: Partial<IToastContextStore>,
-  { type, payload }: TToastReducerPayload
+  { type, payload }: TToastReducerPayload,
 ): Partial<IToastContextStore> => {
   let toast: ISimpleToast = {
     id: v4(),

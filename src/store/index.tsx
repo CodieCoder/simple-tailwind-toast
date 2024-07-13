@@ -1,11 +1,11 @@
-import React, { Reducer, useReducer } from 'react';
+import React, { Reducer, useReducer } from "react";
 import {
   toastContextStore as ToastStore,
   toastContextDispatch as ToastDispatch,
   initialValues,
-} from './Context';
-import { toastReducer } from './reducer';
-import { IToastContextStore, TToastReducerPayload } from '../types';
+} from "./Context";
+import { toastReducer } from "./reducer";
+import { IToastContextStore, TToastReducerPayload } from "../types";
 
 interface IProps {
   children: React.ReactNode;
