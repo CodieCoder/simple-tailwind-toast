@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react';
-import { ISimpleToast } from '../types';
+import { ISimpleToastProps } from '../types';
 import { useSimpleToast } from '../store/hooks';
 import './styles.css';
+import { TOAST_CLASSES } from '../constants';
 
-const Toast: React.FC<{ toast: ISimpleToast }> = ({ toast }) => {
+const Toast: React.FC<ISimpleToastProps> = ({ toast, classNames }) => {
   const [className, setClassName] = React.useState('');
   const { toast: dispatch } = useSimpleToast();
 
@@ -20,17 +21,21 @@ const Toast: React.FC<{ toast: ISimpleToast }> = ({ toast }) => {
     }, toast.duration * 1000);
   }, [removeToast, toast.duration]);
 
+  // const cls =
+
   return (
     <div
       key={toast.id}
-      className={`simple-toast type-${toast.content.type} ${className}`}
+      className={`${TOAST_CLASSES.toast} type-${toast.content.type} ${className}`}
     >
-      <div className="left">
-        <div className="toast-title">{toast.content.title}</div>
-        <div className="toast-description">{toast.content.description}</div>
+      <div className="w-[95%]">
+        <div className="text-center">{toast.content.title}</div>
+        <div className="mt-[0.3rem]">{toast.content.description}</div>
       </div>
-      <div className="right">
-        <span onClick={removeToast}>x</span>
+      <div>
+        <span className="cursor-pointer" onClick={removeToast}>
+          x
+        </span>
       </div>
     </div>
   );
