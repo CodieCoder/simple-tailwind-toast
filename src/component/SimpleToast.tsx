@@ -1,6 +1,7 @@
-import React from 'react'; 
-import { useSimpleToast } from './store/Context';
+import React from 'react';
+import { useSimpleToast } from '../store/hooks';
 import Toast from './Toast';
+import '../style.css';
 
 const SimpleToaster = () => {
   const { store } = useSimpleToast();

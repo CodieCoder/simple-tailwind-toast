@@ -1,2 +1,6 @@
+.vscode/
+node_module/
+dist/
+yarn-error.log
 node_modules
-.vscode
+node_modules

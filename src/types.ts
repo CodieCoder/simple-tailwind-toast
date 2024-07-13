@@ -14,9 +14,9 @@ export interface IToastContextStore {
   toasts: ISimpleToast[];
 }
 
-export type TToastReducer = {
+export type TToastReducerPayload = {
   type: string;
   payload?: any;
 };
 
-export type IToastContextDispatch = React.Dispatch<TToastReducer>;
+export type IToastContextDispatch = React.Dispatch<TToastReducerPayload>;

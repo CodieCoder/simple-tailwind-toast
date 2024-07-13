@@ -1,24 +1,24 @@
-import React from 'react';
-import { FiX } from 'react-icons/fi';
-import { ISimpleToast } from './types';
-import { useSimpleToast } from './store/Context';
+import React, { useCallback } from 'react';
+import { ISimpleToast } from '../types';
+import { useSimpleToast } from '../store/hooks';
+import '../style.css';
 
 const Toast: React.FC<{ toast: ISimpleToast }> = ({ toast }) => {
   const [className, setClassName] = React.useState('');
   const { toast: dispatch } = useSimpleToast();
 
-  const removeToast = () => {
+  const removeToast = useCallback(() => {
     setClassName('hideToast');
     setTimeout(() => {
       dispatch.remove(toast.id);
     }, 200);
-  };
+  }, [setClassName, dispatch, toast.id]);
 
   React.useEffect(() => {
     setTimeout(() => {
       removeToast();
     }, toast.duration * 1000);
-  }, []);
+  }, [removeToast, toast.duration]);
 
   return (
     <div
@@ -30,7 +30,7 @@ const Toast: React.FC<{ toast: ISimpleToast }> = ({ toast }) => {
         <div className="toast-description">{toast.content.description}</div>
       </div>
       <div className="right">
-        <FiX onClick={removeToast} style={{ cursor: 'pointer' }} />
+        <span onClick={removeToast}>x</span>
       </div>
     </div>
   );
