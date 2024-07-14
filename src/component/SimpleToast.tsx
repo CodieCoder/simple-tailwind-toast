@@ -1,18 +1,20 @@
-import React from 'react';
-import { useSimpleToast } from '../store/hooks';
-import Toast from './Toast';
-import './styles.css';
-import { TOAST_CLASSES } from '../constants';
-import { ISimpleToastProps } from '../types';
+import React from "react"
+import { useSimpleToast } from "../store/hooks"
+import Toast from "./Toast"
+import "./styles.css"
+import { DEFAULT_CLASSES } from "../constants"
+import { ISimpleClassNames } from "../types"
 
-const SimpleToaster: React.FC<ISimpleToastProps> = (props) => {
-  const { store } = useSimpleToast();
+const SimpleToaster: React.FC<ISimpleClassNames> = (props) => {
+  const { store } = useSimpleToast()
 
   return (
-    <div className={TOAST_CLASSES.simpleToast}>
-      {store?.toasts?.map((toast) => <Toast key={toast.id} {...props} />)}
+    <div className={DEFAULT_CLASSES.simpleToast}>
+      {store?.toasts?.map((toast) => (
+        <Toast key={toast.id} toast={toast} classNames={props} />
+      ))}
     </div>
-  );
-};
+  )
+}
 
-export default SimpleToaster;
+export default SimpleToaster
