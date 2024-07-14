@@ -1,8 +1,8 @@
-import { ISimpleClassNames, IToastContextStore } from "./types"
+import { ISimpleClassNames, IToastContextStore } from "./types";
 
 export const initialValues: Partial<IToastContextStore> = {
   toasts: [],
-}
+};
 
 export const TOAST_CLASSES: ISimpleClassNames = {
   types: {
@@ -10,7 +10,7 @@ export const TOAST_CLASSES: ISimpleClassNames = {
     warning: "text-[rgb(252,140,4)]",
     success: "",
   },
-}
+};
 
 export const DEFAULT_CLASSES = {
   simpleToast:
@@ -20,4 +20,4 @@ export const DEFAULT_CLASSES = {
 
   hideToast:
     "transition duration-1000 top-0 bg-[#f6e5f6] border-2 border-gray-300 shadow-md rounded-md p-1.5 mx-auto mt-4 w-80 min-w-20 max-w-80 flex justify-between animate-showToast",
-}
+};
