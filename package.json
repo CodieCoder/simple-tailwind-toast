@@ -1,6 +1,6 @@
 {
-  "name": "simple-tailwind-toast2",
-  "version": "1.0.16",
+  "name": "simple-tailwind-toast",
+  "version": "1.0.15",
   "description": "A simple toast package for React apps using tailwind.",
   "author": "CodieCoder",
   "license": "MIT",
