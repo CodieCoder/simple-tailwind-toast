@@ -12,7 +12,7 @@ const SimpleToaster: FC<{
   const { store } = useSimpleToast();
 
   return (
-    <div className={DEFAULT_CLASSES.simpleToast(props.position)}>
+    <div className={DEFAULT_CLASSES.simpleToast(props.position ?? 'topRight')}>
       {store?.toasts?.map((toast) => {
         return (
           <Toast key={toast.id} toast={toast} classNames={props?.classNames} />

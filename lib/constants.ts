@@ -41,6 +41,6 @@ export const DEFAULT_CLASSES = {
 };
 
 export const DEFAULT_DELAY_TIME = {
-  hideToast: 400,
+  hideToast: 350,
   durationMultiplier: 1000,
 };

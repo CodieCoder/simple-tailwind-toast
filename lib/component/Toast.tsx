@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { ISimpleToastProps } from '../types';
 import { useSimpleToast } from '../store/hooks';
 import { DEFAULT_DELAY_TIME, TOAST_CLASSES } from '../constants';
+import CloseButton from './CloseBtn';
 import '../style.css';
 
 const Toast: React.FC<ISimpleToastProps> = ({ toast, classNames }) => {
@@ -28,9 +29,9 @@ const Toast: React.FC<ISimpleToastProps> = ({ toast, classNames }) => {
   return (
     <div
       key={toast.id}
-      className={`${'simpleToast'} ${typeClass ?? ''} ${hideToast ?? ''}`}
+      className={`simpleToast ${typeClass ?? ''} ${hideToast ?? ''}`}
     >
-      <div className="w-[95%]">
+      <div className="w-[95%] text-white">
         <div className={`text-center ${classNames?.title ?? ''}`}>
           {toast.content.title}
         </div>
@@ -40,7 +41,7 @@ const Toast: React.FC<ISimpleToastProps> = ({ toast, classNames }) => {
       </div>
       <div className={` ${classNames?.close ?? ''}`}>
         <span className="cursor-pointer" onClick={removeToast}>
-          x
+          <CloseButton size={15} />
         </span>
       </div>
     </div>
