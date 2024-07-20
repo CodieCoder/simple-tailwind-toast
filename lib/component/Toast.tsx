@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { ISimpleToastProps } from '../types';
 import { useSimpleToast } from '../store/hooks';
-import { TOAST_CLASSES } from '../constants';
+import { DEFAULT_DELAY_TIME, TOAST_CLASSES } from '../constants';
 import '../style.css';
 
 const Toast: React.FC<ISimpleToastProps> = ({ toast, classNames }) => {
@@ -12,13 +12,13 @@ const Toast: React.FC<ISimpleToastProps> = ({ toast, classNames }) => {
     setHideToast('hideToast');
     setTimeout(() => {
       dispatch.remove(toast.id);
-    }, 200);
+    }, DEFAULT_DELAY_TIME.hideToast);
   }, [setHideToast, dispatch, toast.id]);
 
   React.useEffect(() => {
     setTimeout(() => {
       removeToast();
-    }, toast.duration * 1000);
+    }, toast.duration * DEFAULT_DELAY_TIME.durationMultiplier);
   }, [removeToast, toast.duration]);
 
   const typeClass =

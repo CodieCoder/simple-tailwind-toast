@@ -39,3 +39,8 @@ export const DEFAULT_CLASSES = {
 
   hideToast: 'hideToast',
 };
+
+export const DEFAULT_DELAY_TIME = {
+  hideToast: 400,
+  durationMultiplier: 1000,
+};
