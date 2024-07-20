@@ -1,7 +1,7 @@
-import { useContext } from "react";
-import { ISimpleToast } from "../types";
-import { SIMPLE_TOASTER_ACTIONS } from "./actions";
-import { toastContextDispatch, toastContextStore } from "./Context";
+import { useContext } from 'react';
+import { ISimpleToast } from '../types';
+import { SIMPLE_TOASTER_ACTIONS } from './actions';
+import { toastContextDispatch, toastContextStore } from './Context';
 
 export const useSimpleToast = () => {
   const dispatch = useContext(toastContextDispatch);
@@ -17,7 +17,7 @@ export const useSimpleToast = () => {
       if (!id) return;
       dispatch({
         type: SIMPLE_TOASTER_ACTIONS.REMOVE,
-        payload: id,
+        payload: { id },
       });
     },
     removeAll: () => {

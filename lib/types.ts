@@ -1,7 +1,18 @@
+export type TToastPosition =
+  | 'bottomCenter'
+  | 'bottomLeft'
+  | 'bottomRight'
+  | 'midCenter'
+  | 'midLeft'
+  | 'midRight'
+  | 'topCenter'
+  | 'topLeft'
+  | 'topRight';
+
 export interface ISimpleToastContent {
   title?: React.ReactNode;
   description?: React.ReactNode;
-  type?: "error" | "success" | "warning";
+  type?: 'error' | 'success' | 'warning';
 }
 
 export interface ISimpleToast {
@@ -16,7 +27,7 @@ export interface IToastContextStore {
 
 export type TToastReducerPayload = {
   type: string;
-  payload?: any;
+  payload?: Partial<ISimpleToast>;
 };
 
 export type IToastContextDispatch = React.Dispatch<TToastReducerPayload>;
@@ -35,5 +46,5 @@ export interface ISimpleClassNames {
 
 export interface ISimpleToastProps {
   toast: ISimpleToast;
-  classNames: ISimpleClassNames;
+  classNames?: ISimpleClassNames;
 }

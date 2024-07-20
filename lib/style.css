@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.simpleToast {
+  transition: 1s;
+  background: #444;
+  border-radius: 6px;
+  padding: 0.4rem;
+  margin: auto;
+  margin-top: 1rem;
+  width: 20rem;
+  min-width: 5rem;
+  max-width: 20rem;
+  animation: showToast 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hideToast {
+  transition: 0.4s;
+  opacity: 0.7;
+  animation: hideToast 0.4s ease-in-out;
+}
+
+@keyframes showToast {
+  0% {
+    margin-top: 0rem;
+  }
+}
+
+@keyframes hideToast {
+  100% {
+    margin-top: -1rem;
+    opacity: 0;
+  }
+}

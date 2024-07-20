@@ -1,14 +1,15 @@
 import React, { useCallback } from 'react';
 import { ISimpleToastProps } from '../types';
 import { useSimpleToast } from '../store/hooks';
-import { DEFAULT_CLASSES, TOAST_CLASSES } from '../constants';
+import { TOAST_CLASSES } from '../constants';
+import '../style.css';
 
 const Toast: React.FC<ISimpleToastProps> = ({ toast, classNames }) => {
   const [hideToast, setHideToast] = React.useState('');
   const { toast: dispatch } = useSimpleToast();
 
   const removeToast = useCallback(() => {
-    setHideToast(DEFAULT_CLASSES.hideToast);
+    setHideToast('hideToast');
     setTimeout(() => {
       dispatch.remove(toast.id);
     }, 200);
@@ -27,17 +28,13 @@ const Toast: React.FC<ISimpleToastProps> = ({ toast, classNames }) => {
   return (
     <div
       key={toast.id}
-      className={`${DEFAULT_CLASSES.toast} ${typeClass ?? ''} ${
-        hideToast ?? ''
-      }`}
+      className={`${'simpleToast'} ${typeClass ?? ''} ${hideToast ?? ''}`}
     >
       <div className="w-[95%]">
-        <div className={`text-center text-red-500 ${classNames?.title ?? ''}`}>
+        <div className={`text-center ${classNames?.title ?? ''}`}>
           {toast.content.title}
         </div>
-        <div
-          className={`mt-[0.3rem] ${classNames.description ?? ''} text-red-300`}
-        >
+        <div className={`mt-[0.3rem] ${classNames?.description ?? ''}`}>
           {toast.content.description}
         </div>
       </div>
