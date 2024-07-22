@@ -12,7 +12,7 @@ export type TToastPosition =
 export interface ISimpleToastContent {
   title?: React.ReactNode;
   description?: React.ReactNode;
-  type?: 'error' | 'success' | 'warning';
+  type?: 'default' | 'error' | 'info' | 'success' | 'warning';
 }
 
 export interface ISimpleToast {
@@ -39,8 +39,9 @@ export interface ISimpleClassNames {
   types?: {
     default?: string;
     error?: string;
-    warning?: string;
+    info?: string;
     success?: string;
+    warning?: string;
   };
 }
 

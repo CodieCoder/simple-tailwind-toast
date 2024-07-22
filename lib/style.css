@@ -4,14 +4,8 @@
 
 .simpleToast {
   transition: 1s;
-  background: #444;
-  border-radius: 6px;
-  padding: 0.4rem;
   margin: auto;
   margin-top: 1rem;
-  width: 20rem;
-  min-width: 5rem;
-  max-width: 20rem;
   animation: showToast 0.3s ease-in-out;
   display: flex;
   justify-content: space-between;

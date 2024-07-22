@@ -28,7 +28,8 @@
     "build": "yarn lint && tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "prepublishOnly": "npm version && yarn build"
+    "prepublishOnly": "rm -rf dist && npm version && yarn build",
+    "local": "yarn unlink && rm -rf dist && yarn build && yarn link"
   },
   "dependencies": {
     "@types/uuid": "^10.0.0",

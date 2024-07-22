@@ -29,9 +29,11 @@ const Toast: React.FC<ISimpleToastProps> = ({ toast, classNames }) => {
   return (
     <div
       key={toast.id}
-      className={`simpleToast ${typeClass ?? ''} ${hideToast ?? ''}`}
+      className={`simpleToast ${typeClass ?? TOAST_CLASSES.types?.default} ${
+        hideToast ?? ''
+      }`}
     >
-      <div className="w-[95%] text-white">
+      <div className="w-[95%]">
         <div className={`text-center ${classNames?.title ?? ''}`}>
           {toast.content.title}
         </div>
@@ -39,7 +41,7 @@ const Toast: React.FC<ISimpleToastProps> = ({ toast, classNames }) => {
           {toast.content.description}
         </div>
       </div>
-      <div className={` ${classNames?.close ?? ''}`}>
+      <div className={`${classNames?.close ?? ''}`}>
         <span className="cursor-pointer" onClick={removeToast}>
           <CloseButton size={15} />
         </span>

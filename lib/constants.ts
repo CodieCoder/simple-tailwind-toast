@@ -4,18 +4,23 @@ export const initialValues: Partial<IToastContextStore> = {
   toasts: [],
 };
 
+const BASE_TOAST_CLASSES =
+  ['p-[0.4rem]', 'min-w-[19rem]', 'rounded'].join(' ') + ' ';
+
 export const TOAST_CLASSES: ISimpleClassNames = {
   types: {
-    error: 'text-red-600',
-    warning: 'text-[rgb(252,140,4)]',
-    success: '',
+    default: BASE_TOAST_CLASSES + 'bg-gray-900 text-gray-200',
+    error: BASE_TOAST_CLASSES + 'bg-red-600 text-grey-100',
+    info: BASE_TOAST_CLASSES + 'bg-indigo-700 text-gray-200',
+    success: BASE_TOAST_CLASSES + 'bg-green-700 text-white',
+    warning: BASE_TOAST_CLASSES + 'bg-amber-400 text-gray-900',
   },
 };
 
 export const ToastPositions: Record<TToastPosition, string> = {
-  bottomCenter: 'bottom-0',
-  bottomLeft: 'bottom-0 left-6',
-  bottomRight: 'bottom-0 right-6',
+  bottomCenter: 'bottom-2',
+  bottomLeft: 'bottom-2 left-6',
+  bottomRight: 'bottom-2 right-6',
   midCenter: '',
   midLeft: 'left-6',
   midRight: 'right-6',
@@ -25,7 +30,7 @@ export const ToastPositions: Record<TToastPosition, string> = {
 };
 
 const toastPositioning = (position?: TToastPosition): string => {
-  const result = 'fixed text-center text-[#fff] z-[9999] p-1 mx-auto ';
+  const result = 'fixed text-center text-[#fff] z-[9999] mx-auto ';
 
   if (!position) return result;
 
