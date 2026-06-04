@@ -1,5 +1,10 @@
+.DS_Store
 .vscode/
-node_module/
+.yarn/
+
+node_modules/
 dist/
+example/dist/
+coverage/
+
 yarn-error.log
-node_modules
