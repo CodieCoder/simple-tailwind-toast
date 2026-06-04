@@ -1,6 +1,18 @@
-import SimpleToaster from './component/SimpleToast';
-import SimpleToastProvider from './store';
-import { useSimpleToast } from './store/hooks';
-import * as types from './types';
-
-export { SimpleToastProvider, SimpleToaster, useSimpleToast, types };
+export { Toaster } from './Toaster';
+export { toast } from './toast';
+export { toastClasses } from './classes';
+export type {
+  RenderToastHelpers,
+  ToastApi,
+  ToastClassNames,
+  ToastDuration,
+  ToastIcons,
+  ToastInput,
+  ToastMethodOptions,
+  ToastOptions,
+  ToastPosition,
+  ToastRecord,
+  ToastSlot,
+  ToastType,
+  ToasterProps,
+} from './types';

@@ -1,207 +1,208 @@
 # Simple Tailwind Toast
 
-# Simple tailwind toast is a simple toast that comes with customizable components styled with TailwindCSS.
+A lightweight, providerless toast library for React 18+ apps. It ships plain React components and Tailwind class presets, not generated CSS.
 
-A flexible and customizable toast notification component for React applications. This package provides an easy-to-use toast system that can be styled with CSS, SCSS, Less, or Tailwind CSS.
+## Why
 
-## Features
+- No runtime dependencies.
+- No provider or context setup.
+- No CSS injection and no bundled Tailwind reset.
+- Fully customizable through Tailwind classes, data attributes, or a custom renderer.
+- SSR-safe imports.
 
-- Easy integration with React applications
-- Customizable styling options (CSS, SCSS, Less, Tailwind CSS)
-- Flexible positioning of toast notifications
-- Simple API for creating and managing toasts
-
-## Installation
-
-Install the package using npm:
+## Install
 
 ```bash
 npm install simple-tailwind-toast
-Or using yarn:
+```
+
+```bash
 yarn add simple-tailwind-toast
 ```
 
-# Usage
+## Tailwind Setup
 
-Here's a basic example of how to use Simple Tailwind Toast in your React application:
+The package does not ship CSS. If you use the default class presets, make sure Tailwind scans the installed package.
 
-```bash
-import React from 'react';
-import {
-  SimpleToastProvider,
-  SimpleToaster,
-  useSimpleToast } from 'simple-tailwind-toast';
+Tailwind v4:
 
-const ToastTest = () => {
-  return (
-    <SimpleToastProvider>
-      <ToastMain />
-      <SimpleToaster />
-    </SimpleToastProvider>
-  );
+```css
+@import "tailwindcss";
+
+@source "../node_modules/simple-tailwind-toast/dist";
+```
+
+Use the v4 `@import` form above. The older `@tailwind base; @tailwind components; @tailwind utilities;` directives can miss theme-backed utility classes in v4 projects.
+
+Tailwind v3:
+
+```js
+export default {
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/simple-tailwind-toast/dist/**/*.{js,mjs,cjs}',
+  ],
 };
+```
 
-const ToastMain = () => {
-  const { toast } = useSimpleToast();
+## Quick Start
 
+```tsx
+import { Toaster, toast } from 'simple-tailwind-toast';
+
+export function App() {
   return (
-    <div>
-      <div className="text-3xl font-bold underline text-red-600">
-        Tailwind test!
-      </div>
-      <br />
-      <br />
+    <>
       <button
-        onClick={() => {
-          toast.add({
-            content: {
-              title: 'Hello Toast!',
-              description: 'Testing Simple tailwind toast',
-            },
-          });
-        }}
-        className="bg-slate-300 text-black p-2 m-2"
+        onClick={() =>
+          toast.success('Saved', {
+            description: 'Your changes are live.',
+          })
+        }
       >
-        Click to toast
+        Show toast
       </button>
-    </div>
+
+      <Toaster position="top-right" />
+    </>
   );
-};
-
-export default ToastTest;
-
-```
-
-# API
-
-SimpleToastProvider
-Wrap your application with SimpleToastProvider to enable the toast functionality.
-
-```bash
-SimpleToastProvider: React.FC<"children: React.ReactNode">
-```
-
-SimpleToaster
-Place SimpleToaster component at the root of your app or any where ever you can have access to the toast provider.
-You can style the toasts using CSS, SCSS, Less, or Tailwind CSS. The component provides class names that you can target for custom styling.
-
-```bash
-SimpleToaster: FC<{
-    classNames?: ISimpleClassNames;
-    position?: TToastPosition;
-}>
-
- TToastPosition = 'bottomCenter'| 'bottomLeft'| 'bottomRight'| 'midCenter'| 'midLeft'| 'midRight' | 'topCenter'| 'topLeft'| 'topRight';)
-
-ISimpleClassNames {
-  title?: string;
-  description?: string;
-  close?: string;
-  types?: {
-    default?: string;
-    error?: string;
-    warning?: string;
-    success?: string;
-  };
 }
 ```
 
-useSimpleToast
-A hook that provides the toast object with methods to manage toasts.
+## API
 
-```bash
- useSimpleToast: () => {
-    store: Partial<IToastContextStore>;
-    toast: {
-        add: (toast: Partial<ISimpleToast>) => void;
-        remove: (id: string) => void;
-        removeAll: () => void;
-    };
-}
+```ts
+toast('Message');
+toast({ title: 'Message', description: 'More detail' });
 
+toast.success('Saved', options);
+toast.error('Failed', options);
+toast.warning('Check this', options);
+toast.info('Heads up', options);
+
+toast.dismiss(id);
+toast.clear();
 ```
 
-# toast.add
+Every `toast.*` call returns the toast id. Passing an existing `id` updates that toast instead of creating a duplicate.
 
-Adds a new toast notification.
+```tsx
+const id = toast.info('Uploading', {
+  description: '0%',
+  duration: false,
+});
 
-```bash
-  toast.add({
-            content: {
-              title: 'Hello Toast!',
-              description: 'Testing Simple tailwind toast',
-            },
-          });
+toast.success('Upload complete', {
+  id,
+  description: '100%',
+  duration: 3000,
+});
 ```
 
-content: An object containing title, description and duration (in milliseconds ) for that particular toast
+## Options
 
-# toast.remove
+```ts
+type ToastType = 'default' | 'success' | 'error' | 'warning' | 'info';
+type ToastPosition =
+  | 'top-left'
+  | 'top-center'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-center'
+  | 'bottom-right';
 
-Removes a toast using id
-
-```bash
-toast.remove(toast.id);
-```
-
-# toast.removeAll
-
-Removes all toast notification
-
-```bash
-  toast.removeAll(toast.id);
-```
-
-# Types
-
-```bash
-
-TToastPosition =
-  | 'bottomCenter'
-  | 'bottomLeft'
-  | 'bottomRight'
-  | 'midCenter'
-  | 'midLeft'
-  | 'midRight'
-  | 'topCenter'
-  | 'topLeft'
-  | 'topRight';
-
-
-SimpleClassNames {
-  title?: string;
-  description?: string;
-  close?: string;
-  types?: {
-    default?: string;
-    error?: string;
-    warning?: string;
-    success?: string;
-  };
-}
-
-
-ISimpleToastContent {
+type ToastOptions = {
+  id?: string;
   title?: React.ReactNode;
   description?: React.ReactNode;
-  type?: 'error' | 'success' | 'warning';
-}
-
- ISimpleToast {
-  id: string;
-  content: ISimpleToastContent;
-  duration: number;
-}
-
-IToastContextStore {
-  toasts: ISimpleToast[];
-}
-
+  type?: ToastType;
+  duration?: number | false;
+  dismissible?: boolean;
+  className?: string;
+  onDismiss?: (toast: ToastRecord) => void;
+};
 ```
 
-> Customization
-> You can customize the appearance and behavior of toasts by passing props to SimpleToaster or by styling the provided class names.
-> Contributing
-> Contributions are welcome! Please feel free to submit a Pull Request.
-> License
-> This project is licensed under the MIT License - see the LICENSE file for details.
+`duration` is in milliseconds. The default is `4000`; use `duration: false` for persistent toasts.
+
+## Customization
+
+Use `classNames` to replace any slot class. The default classes are exported as `toastClasses.default` if you want to copy and adjust them.
+
+```tsx
+import { Toaster, toastClasses } from 'simple-tailwind-toast';
+
+<Toaster
+  classNames={{
+    ...toastClasses.default,
+    toast:
+      'pointer-events-auto rounded-md border bg-zinc-950 p-4 text-sm text-white shadow-lg',
+    variants: {
+      ...toastClasses.default.variants,
+      success: 'border-emerald-400',
+      error: 'border-red-400',
+    },
+  }}
+/>;
+```
+
+You can also target attributes:
+
+```css
+[data-type="success"] {
+  border-color: var(--color-emerald-400);
+}
+```
+
+For full control, pass `renderToast`.
+
+```tsx
+<Toaster
+  renderToast={(toast, { dismiss }) => (
+    <div>
+      <strong>{toast.title}</strong>
+      <button onClick={dismiss} type="button">
+        Close
+      </button>
+    </div>
+  )}
+/>
+```
+
+## Toaster Props
+
+```ts
+type ToasterProps = {
+  position?: ToastPosition;
+  duration?: number | false;
+  maxToasts?: number;
+  classNames?: ToastClassNames;
+  icons?: Partial<Record<ToastType, React.ReactNode>>;
+  renderToast?: (toast: ToastRecord, helpers: { dismiss: () => void }) => React.ReactNode;
+};
+```
+
+## Bundle
+
+The package externalizes React and contains no CSS-in-JS runtime, no Tailwind compiler output, and no class-merging dependency. The current production ESM build is about 2.61 KB gzip excluding source maps, and the dry-run npm package is about 15.7 KB packed.
+
+## Development
+
+```bash
+corepack enable
+yarn install
+yarn test
+yarn typecheck
+yarn build
+```
+
+Use `yarn pack:dry` before release changes to verify the files that will be published.
+
+## Contributing
+
+Contributions are welcome. Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before opening larger pull requests, see [CHANGELOG.md](./CHANGELOG.md) for release notes, and report vulnerabilities through [SECURITY.md](./SECURITY.md).
+
+## License
+
+MIT

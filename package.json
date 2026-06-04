@@ -1,7 +1,8 @@
 {
   "name": "simple-tailwind-toast",
-  "version": "1.0.23",
-  "description": "A simple toast package for React apps using tailwind.",
+  "version": "2.0.0",
+  "packageManager": "yarn@4.14.1",
+  "description": "A lightweight, providerless React toast library styled with Tailwind CSS classes.",
   "author": "CodieCoder",
   "license": "MIT",
   "repository": {
@@ -9,51 +10,57 @@
     "url": "git+https://github.com/CodieCoder/simple-tailwind-toast.git"
   },
   "type": "module",
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "LICENSE",
+    "README.md"
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.umd.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./dist/index.module.css": "./dist/index.module.css"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
   },
   "scripts": {
     "dev": "vite",
-    "build": "yarn lint && tsc -b && vite build",
+    "build": "yarn typecheck && vite build",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "preview": "vite preview",
-    "prepublishOnly": "npm version && yarn build"
+    "prepack": "yarn lint && yarn test && yarn build",
+    "pack:dry": "npm pack --dry-run"
   },
-  "dependencies": {
-    "@types/uuid": "^10.0.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "uuid": "^10.0.0"
+  "peerDependencies": {
+    "react": ">=18.0.0"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.14.11",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
-    "@vitejs/plugin-react": "^4.3.1",
     "@vitejs/plugin-react-swc": "^3.7.0",
-    "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
-    "postcss": "^8.4.39",
-    "tailwindcss": "^3.4.6",
-    "typescript": "^5.2.2",
+    "jsdom": "^24.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "5.4.2",
     "vite": "^5.3.4",
-    "vite-plugin-css-injected-by-js": "^3.5.1",
-    "vite-plugin-dts": "^4.0.0-beta.1"
+    "vite-plugin-dts": "^4.0.0-beta.1",
+    "vitest": "^1.6.0"
   },
   "keywords": [
     "react",

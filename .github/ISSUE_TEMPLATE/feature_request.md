@@ -1,20 +1,22 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: ''
-labels: ''
+about: Suggest an API, styling, accessibility, or packaging improvement
+title: 'feat: '
+labels: enhancement
 assignees: ''
-
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+**Use case**
+What are you trying to build, and where does the current API fall short?
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+**Proposed solution**
+Describe the API, prop, behavior, or documentation change you would like.
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+**Alternatives**
+What workarounds or other libraries have you considered?
+
+**Compatibility**
+Would this affect bundle size, SSR safety, accessibility, or Tailwind setup?
 
 **Additional context**
-Add any other context or screenshots about the feature request here.
+Add examples, screenshots, links, or related issues.
